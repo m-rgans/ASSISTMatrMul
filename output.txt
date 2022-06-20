@@ -1,0 +1,973 @@
+
+                    J E S 2  J O B  L O G  --  S Y S T E M  2 9 6 4  --  N O D E  S V S C J E S 2
+
+ 
+ 00.41.25 JOB04513 ---- MONDAY,    09 MAY 2022 ----
+ 00.41.25 JOB04513  IRR010I  USERID KC03D28  IS ASSIGNED TO THIS JOB.
+ 00.41.25 JOB04513  ICH70001I KC03D28  LAST ACCESS AT 00:38:37 ON MONDAY, MAY 9, 2022
+ 00.41.25 JOB04513  $HASP373 KC03D28A STARTED - INIT 1    - CLASS A        - SYS 2964
+ 00.41.25 JOB04513  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+ 00.41.25 JOB04513  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+ 00.41.25 JOB04513  -JSTEP01              00     40      5       .00       .00     .0             8  BATCH        0     0     0     0
+ 00.41.25 JOB04513  -KC03D28A ENDED.  NAME-Joshua Sulouff       TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=    .0
+ 00.41.25 JOB04513  $HASP395 KC03D28A ENDED - RC=0000
+
+ ------ JES2 JOB STATISTICS ------
+
+
+   09 MAY 2022 JOB EXECUTION DATE
+
+
+           724 CARDS READ
+
+
+           924 SYSOUT PRINT RECORDS
+
+
+             0 SYSOUT PUNCH RECORDS
+
+
+            77 SYSOUT SPOOL KBYTES
+
+
+          0.00 MINUTES EXECUTION TIME
+         1 //KC03D28A JOB ,'Joshua Sulouff',MSGCLASS=H                             JOB04513
+         2 //JSTEP01  EXEC PGM=ASSIST,PARM='MACRO=F'
+         3 //STEPLIB  DD DSN=KC00NIU.ASSIST.LOADLIB,DISP=SHR
+         4 //SYSPRINT DD SYSOUT=*
+         5 //SYSIN    DD *
+           //*
+           //* IN-STREAM PROGRAM DATA
+         6 //FT05F001 DD *
+         7 //
+ ICH70001I KC03D28  LAST ACCESS AT 00:38:37 ON MONDAY, MAY 9, 2022
+ IEFA111I KC03D28A IS USING THE FOLLOWING JOB RELATED SETTINGS:
+          SWA=ABOVE,TIOT SIZE=32K,DSENQSHR=DISALLOW,GDGBIAS=JOB
+ IEF236I ALLOC. FOR KC03D28A JSTEP01
+ IGD103I SMS ALLOCATED TO DDNAME STEPLIB
+ IEF237I JES2 ALLOCATED TO SYSPRINT
+ IEF237I JES2 ALLOCATED TO SYSIN
+ IEF237I JES2 ALLOCATED TO FT05F001
+ IEF142I KC03D28A JSTEP01 - STEP WAS EXECUTED - COND CODE 0000
+ IGD104I KC00NIU.ASSIST.LOADLIB                       RETAINED,  DDNAME=STEPLIB
+ IEF285I   KC03D28.KC03D28A.JOB04513.D0000103.?         SYSOUT
+ IEF285I   KC03D28.KC03D28A.JOB04513.D0000101.?         SYSIN
+ IEF285I   KC03D28.KC03D28A.JOB04513.D0000102.?         SYSIN
+ IEF373I STEP/JSTEP01 /START 2022129.0041
+ IEF032I STEP/JSTEP01 /STOP  2022129.0041
+         CPU:     0 HR  00 MIN  00.01 SEC    SRB:     0 HR  00 MIN  00.00 SEC
+         VIRT:   584K  SYS:   248K  EXT:        0K  SYS:    11364K
+         ATB- REAL:                  1056K  SLOTS:                     0K
+              VIRT- ALLOC:      13M SHRD:       0M
+ IEF375I  JOB/KC03D28A/START 2022129.0041
+ IEF033I  JOB/KC03D28A/STOP  2022129.0041
+         CPU:     0 HR  00 MIN  00.01 SEC    SRB:     0 HR  00 MIN  00.00 SEC
+
+ *** ASSIST 4.0/A2-05/15/82  470/V7A/0:OS/VS2  INS=SDFP7/X=BGHO, CHECK/TRC/=1180, OPTS=CDKMPR FROM PENN ST*NIU COMPSCI*LT
+
+ MACRO=F
+
+                                                                                                                PAGE    1
+
+   LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+                                       1 *
+                                       2 ******************************************************************
+                                       3 *                                                                *
+                                       4 *        MACRO: CTRLS
+                                       5 *        AUTO GENERATES ENTRY LINKAGE
+                                       6 *        &LAB - LABEL OF CONTROL SECTION
+                                       7 *        &SVA - LABEL OF SAVE AREA
+                                       8 *                                                                *
+                                       9 ******************************************************************
+                                      10          MACRO               STANDARD ENTRY LINKAGE MACRO
+                                      11          CTRLS &LAB,&SVA
+                                      12          STM   14,12,12(13)  SAVE CALLER REGISTERS
+                                      13          LR    12,15         GET BASE POINTER
+                                      14          USING &LAB,12       ADDRESSABILITY
+                                      15          LA    14,&SVA       LOAD NEW SAVE AREA
+                                      16          ST    14,8(13)      STORE FW PTR IN CALLER
+                                      17          ST    13,4(14)      STORE BACK PTR
+                                      18          LR    13,14         ESTABLISH NEW SAVE AREA
+                                      19          MEND
+                                      20 *
+                                      21 ******************************************************************
+                                      22 *                                                                *
+                                      23 *        MACRO: RET
+                                      24 *        AUTO GENERATES EXIT
+                                      25 *                                                                *
+                                      26 ******************************************************************
+                                      27          MACRO              STANDARD EXIT LINKAGE MACRO
+                                      28 &LABEL   RET
+                                      29 &LABEL   L     13,4(,13)     CALLER SAVE -> 13
+                                      30          L     14,12(,13)    RESTORE 14
+                                      31          LM    0,12,20(13)   RELOAD REGISTERS
+                                      32          BR    14
+                                      33          MEND
+                                      34 *
+                                      35 *
+                                      36 ******************************************************************
+                                      37 *                                                                *
+                                      38 *        MACRO: BSR
+                                      39 *        JUMPS INTO A SUBROUTINE WITH THE GIVEN ARGUMENTS
+                                      40 *        &SUB  - SUBROUTINE LABEL
+                                      41 *        &ARGS - ARGUMENTS LABEL
+                                      42 *                                                                *
+                                      43 ******************************************************************
+                                      44          MACRO               BRANCH SUBROUTINE
+                                      45 &LABEL   BSR   &SUB,&ARGS
+                                      46 &LABEL   LA    1,&ARGS       LOAD ARGS
+                                      47          L     15,=V(&SUB)   LOAD JUMP
+                                      48          BALR  14,15         JUMP
+                                      49          MEND
+                                      50 *
+                                      51 ******************************************************************
+                                      52 *                                                                *
+
+                                                                                                                PAGE    2
+
+   LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+                                      53 *        MACRO: MINCR (MEMORY INCREMENT)
+                                      54 *        INCREMENTS A SECTION OF MEMORY, LEAVING THE RESULT
+                                      55 *        IN A REGISTER
+                                      56 *        &ADDR - MEMORY TO INCREMENT
+                                      57 *        &R    - REGISTER
+                                      58 *                                                                *
+                                      59 ******************************************************************
+                                      60          MACRO
+                                      61 &LABEL   MINCR &ADDR,&R
+                                      62          L     &R,&ADDR
+                                      63          LA    &R,1(,&R)
+                                      64          ST    &R,&ADDR
+                                      65          MEND
+                                      66 *
+                                      67 * DOC BOX HERE
+                                      68 *
+                                      69 *DSECT FOR MATRIXES
+ 000007                               70 MATRMAXZ EQU   7      MAXIMUM SIDE LENGTH OF MATRIX
+                                      71 *
+                                      72 * OFFSETS INCLUDED FOR MANUAL STRUCT DEREFERENCING
+                                      73 *
+ 000000                               74 $MATR    DSECT
+ 000000                               75 $SIZEXO  EQU   *-$MATR   OFFSET OF SIZEX
+ 000000                               76 $SIZEX   DS    1F LENGTH OF ROW
+ 000004                               77 $SIZEYO  EQU   *-$MATR   OFFSET OF SIZEY
+ 000004                               78 $SIZEY   DS    1F LENGTH OF COLUMN
+ 000008                               79 $MTRBODO EQU   *-$MATR   OFFSET OF BODY
+ 000008                               80 $MTRBODY DS    (MATRMAXZ*MATRMAXZ)PL9  BODY OF MATRIX
+ 0001C1                               81 $MATRZ   EQU   *-$MATR SIZEOF(MATRIX)
+ 000009                               82 $MATRBZ  EQU   9
+                                      83 *
+                                      84 * EXTERNAL PROG FIRST
+                                      85 ******************************************************************
+                                      86 *                                                                *
+                                      87 * DECIMAL PARSING SUBPROGRAM                            *
+                                      88 *                                                                *
+                                      89 * TAKES AN EBCDIC REPRESENTATION OF A DECIMAL VALUE AND CONVERTS *
+                                      90 * IT TO A PACKED DECIMAL REPRESENTATION. THE PROVIDED START AND  *
+                                      91 * TRAILING ADDRESSES DETERMINE THE REGION OF STORAGE THAT WILL   *
+                                      92 * BE SCANNED, WITH THE TRAILING ADDRESS 1 POS PAST THE END. SETS *
+                                      93 * THE SIGN DIGIT OF THE RESULTING PACKED DECIMAL IF A PRECEDING  *
+                                      94 * SIGN CHARACTER ACCOMPANIES THE NUMERIC CHARACTERS. IF NO SIGN  *
+                                      95 * CHARACTER IS FOUND ASSUMES A POSITIVE QUANTITY. COUNTS AND     *
+                                      96 * RETURNS THE NUMBER OF IMPLIED DECIMAL PLACES, WHICH WILL BE    *
+                                      97 * BE NON-ZERO IF A DECIMAL CHARACTER IS FOUND.                   *
+                                      98 *                                                                *
+                                      99 * RETURN CODES:                                                  *
+                                     100 *   0 - PARSE WAS SUCCESSFUL                                     *
+                                     101 *   1 - PARSE WAS UNSUCCESSFUL                                   *
+                                     102 *                                                                *
+                                     103 *   NOTE: IF PARSE WAS UNSUCCESSFUL THEN RETURN FIELD WILL NOT   *
+                                     104 *         CONTAIN A VALID PACKED DECIMAL, BUT WILL CONTAIN PREV  *
+                                     105 *         DATA WITH THE LAST BYTE OVERWRITTEN WITH X'00'         *
+                                     106 *         (GUARANTEEING IT WILL NOT CONTAIN A VALID PACKED DEC)  *
+                                     107 *                                                                *
+                                     108 * PARSING WILL FAIL IN THE FOLLOWING CASES:                      *
+                                     109 *   1.) THE SUBPROGRAM ATTEMPTED TO PARSE AN INVALID CHARACTER   *
+
+                                                                                                                PAGE    3
+
+   LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+                                     110 *       (I.E., NOT C'+', C'-', C'.' OR NUMERIC CHAR)             *
+                                     111 *   2.) NO NUMERIC CHARACTERS WERE FOUND                         *
+                                     112 *   3.) NO TRAILING SPACE CHARACTER WAS FOUND                    *
+                                     113 *   4.) THE NUMBER BEING PARSED CONTAINED MORE THAN 15 DIGITS    *
+                                     114 *                                                                *
+                                     115 * TODO: IMPLEMENT PARSE END CONSTRAINTS (STOP AT BUFFER END,     *
+                                     116 *       > 15 SOURCE DIGITS)                                      *
+                                     117 *                                                                *
+                                     118 * REGISTER USAGE:                                                *
+                                     119 *   2 - (IN) PTR TO BUFFERING LOC BEGIN ADDR (F)                 *
+                                     120 *   3 - (IN) PTR TO BUFFERING LOC TRAILING ADDR (F)              *
+                                     121 *   4 - (OUT) PTR TO PACKED DECIMAL'S RECEIVING FIELD (PL8)      *
+                                     122 *   5 - (OUT) ADDRESS OF FIRST TRAILING SPACE IN BUFFER (F)      *
+                                     123 *   6 - (OUT) IMPLIED DECIMALS (F)                               *
+                                     124 *   7 - BUFFER READ PTR                                          *
+                                     125 *   8 - COPY FIELD WRITE PTR                                     *
+                                     126 *   9 - COUNTER, IMPLIED DECIMAL PLACES                          *
+                                     127 *                                                                *
+                                     128 ******************************************************************
+ 000000                              129 PARSEDEC CSECT
+                                     130 * ==== Entry linkage ===========
+                                     131 *      Back up caller's register state
+ 000000 90EC D00C            0000C   132          STM   14,12,12(13)   SAVE REGS IN CALLER'S SAVE AREA
+                                     133 *      Establish local addressability
+ 000004 18CF                         134          LR    12,15          COPY CSECT ADDRESS INTO R12
+ 000000                              135          USING PARSEDEC,12    ESTABLISH R12 AS THE BASE REG
+                                     136 *      Store backwards, forwards pointers
+ 000006 41E0 C12C            0012C   137          LA    14,PARSSAVE    R14 POINTS TO THIS CSECT'S SAVE AREA
+ 00000A 50D0 E004            00004   138          ST    13,4(,14)      STORE ADDRESS OF CALLER'S SAVE AREA
+ 00000E 50E0 D008            00008   139          ST    14,8(,13)      STORE ADDRESS OF THIS CSECT'S SAVE AREA
+                                     140 *      Preemptively point r13 at local save area
+ 000012 18DE                         141          LR    13,14          POINT R13 AT THIS CSECT'S SAVE AREA
+                                     142 *
+ 000014 9826 1000            00000   143          LM    2,6,0(1)       R2 -> PARSE START ADDR
+                                     144 *                             R3 -> PARSE END ADDR
+                                     145 *                             R4 -> PACKED RETURN FIELD
+                                     146 *                             R5 -> ADDR IN BUFFER, TRAILING SPACE
+                                     147 *                             R6 -> IMPLIED DECIMAL PLACES
+                                     148 *
+                                     149 * (RE)INITIALIZE STATE VARS
+ 000018 9200 4007      00007         150          MVI   7(4),X'00'     SET LAST BYTE TO ERROR CODE
+ 00001C 9200 C174      00174         151          MVI   SCODE,X'00'    (RE)SET DEFAULT SIGN CODE
+ 000020 9200 C175      00175         152          MVI   DECFLAG,X'00'  (RE)SET DECIMAL FLAG
+ 000024 1872                         153          LR    7,2            SET SCAN HEAD TO BUFFER START
+ 000026 4190 0000            00000   154          LA    9,0            RESET DECIMAL PLACE COUNTER
+                                     155 *
+                                     156 * FAST-FORWARD PAST LEADING SPACES
+ 00002A 9540 7000      00000         157 FFLOOP   CLI   0(7),C' '      TEST FOR LEADING SPACE
+ 00002E 4770 C03E            0003E   158          BNE   TESTNEG        NON-SPACE CHAR FOUND, BEGIN PARSE
+ 000032 4120 2001            00001   159          LA    2,1(,2)        MOVE START ADDR FORWARD 1 POS
+ 000036 4170 7001            00001   160          LA    7,1(,7)        MOVE READ HEAD FORWARD 1 POS
+ 00003A 47F0 C02A            0002A   161          B     FFLOOP         TEST NEXT POS
+                                     162 *
+                                     163 ** TEST FOR LEADING +/-
+                                     164 *
+                                     165 * TEST IF FIRST CHAR IS '-'
+ 00003E 9560 7000      00000         166 TESTNEG  CLI   0(7),C'-'      TEST FOR NEGATIVE SIGN
+
+                                                                                                                PAGE    4
+
+   LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+ 000042 4770 C052            00052   167          BNE   TESTPOS        NO NEGATIVE SIGN, TEST FOR +
+ 000046 92FF C174      00174         168          MVI   SCODE,X'FF'    SET SIGN CODE BYTE TO -1
+ 00004A 4120 7001            00001   169          LA    2,1(,7)        MOVE BUFFER START PAST SIGN
+ 00004E 47F0 C0BA            000BA   170          B     UPDTSCHD       GO TO NEXT CHAR
+                                     171 *
+                                     172 * TEST IF FIRST CHAR IS '+'
+ 000052 954E 7000      00000         173 TESTPOS  CLI   0(7),C'+'      TEST FOR POSITIVE SIGN
+ 000056 4770 C062            00062   174          BNE   SCANLOOP       NO POSITIVE SIGN, START SCANNING
+ 00005A 4120 7001            00001   175          LA    2,1(,7)        MOVE BUFFER START PAST SIGN
+ 00005E 4780 C0BA            000BA   176          BE    UPDTSCHD       POS SIGN FOUND, GO TO NEXT CHAR
+                                     177 *
+                                     178 ** SCAN FROM LEFT TO RIGHT FOR FIRST TRAILING SPACE **
+                                     179 *
+                                     180 * TEST AND HANDLE SPACE FOUND CASE
+ 000062 9540 7000      00000         181 SCANLOOP CLI   0(7),C' '      TEST FOR SPACE CHAR
+ 000066 4770 C078            00078   182          BNE   TSTDEC         NOT A SPACE, TEST FOR DECIMAL CHAR
+ 00006A 1972                         183          CR    7,2            TEST OFFSET INTO BUFFER
+ 00006C 4770 C0CE            000CE   184          BNE   COPYPREP       FOUND TRAIL SPC, BEGIN NEXT STEPS
+ 000070 41F0 0001            00001   185          LA    15,1           OTHERWISE SET R15 = 1 (PARSE ERROR)
+ 000074 47F0 C116            00116   186          B     PARSEXIT       EXIT IMMEDIATELY
+                                     187 *
+                                     188 * TEST FOR DECIMAL CHARACTER
+ 000078 954B 7000      00000         189 TSTDEC   CLI   0(7),C'.'      TEST FOR DECIMAL CHAR
+ 00007C 4770 C09A            0009A   190          BNE   TSTCXLOW       NOT FOUND, TEST FOR NON-NUMERIC
+ 000080 9501 C175      00175         191          CLI   DECFLAG,X'01'  TEST IF FLAG ALREADY SET
+ 000084 4770 C090            00090   192          BNE   SETDFLAG       IF NOT THEN SET FLAG BYTE
+ 000088 41F0 0001            00001   193          LA    15,1           OTHERWISE SET R15 = 1 (PARSE ERROR)
+ 00008C 47F0 C116            00116   194          B     PARSEXIT       EXIT IMMEDIATELY
+ 000090 9201 C175      00175         195 SETDFLAG MVI   DECFLAG,X'01'  SET DECIMAL FLAG TO 1 (TRUE)
+ 000094 0690                         196          BCTR  9,0            SET COUNT TO -1 (IGNORES DEC CHAR)
+ 000096 47F0 C0BA            000BA   197          B     UPDTSCHD       UPDATE AND CONTINUE
+                                     198 *
+                                     199 * TEST FOR NON-NUMERIC CHARACTERS
+ 00009A 95F0 7000      00000         200 TSTCXLOW CLI   0(7),X'F0'     TEST IF < X'F0' (CHAR 0)
+ 00009E 47B0 C0AA            000AA   201          BNL   TSTCXHI        IF NOT LOW THEN TEST IF HIGH
+ 0000A2 41F0 0001            00001   202          LA    15,1           R15 = 1 (PARSE ERROR)
+ 0000A6 47F0 C116            00116   203          B     PARSEXIT       OTHERWISE DO NOTHING AND EXIT
+ 0000AA 95F9 7000      00000         204 TSTCXHI  CLI   0(7),X'F9'     TEST IF > X'F9' (CHAR 9)
+ 0000AE 47D0 C0BA            000BA   205          BNH   UPDTSCHD       IF NOT HIGH THEN UPDATE AND CONTINUE
+ 0000B2 41F0 0001            00001   206          LA    15,1           OTHERWISE R15 = 1 (PARSE ERROR)
+ 0000B6 47F0 C116            00116   207          B     PARSEXIT       DO NOTHING AND EXIT
+                                     208 *
+                                     209 * UPDATE AND CONTINUE
+ 0000BA 4170 7001            00001   210 UPDTSCHD LA    7,1(,7)        INCREMENT READ PTR
+ 0000BE 9501 C175      00175         211          CLI   DECFLAG,X'01'  TEST IF DECIMAL FLAG IS SET
+ 0000C2 4770 C062            00062   212          BNE   SCANLOOP       IF NOT THEN TEST NEXT CHAR
+ 0000C6 4190 9001            00001   213          LA    9,1(,9)        INCREMENT IMPLIED DEC COUNTER
+ 0000CA 47F0 C062            00062   214          B     SCANLOOP       TEST NEXT CHAR
+                                     215 *
+                                     216 * PREPARE FOR COPY INTO TEMP FIELD
+ 0000CE 5070 5000            00000   217 COPYPREP ST    7,0(,5)         WRITE OUT TRAILING SPACE ADDR
+ 0000D2 92F0 C176      00176         218          MVI   ZNTEMP,X'F0'    RESET COPY FIELD TO 0
+ 0000D6 D20D C177 C176 00177 00176   219          MVC   ZNTEMP+1(14),ZNTEMP
+ 0000DC 4180 C184            00184   220          LA    8,ZNTEMP+14     GET ADDR OF LAST CHAR IN COPY FIELD
+ 0000E0 0670                         221          BCTR  7,0             MOVE READ PTR BACK TO LAST DIGIT
+                                     222 *
+                                     223 * COPY EBCDIC CODES RIGHT TO LEFT INTO CONVERSION FIELD
+
+                                                                                                                PAGE    5
+
+   LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+ 0000E2 954B 7000      00000         224 COPYLOOP CLI   0(7),C'.'      TEST IF DECIMAL CHARACTER
+ 0000E6 4780 C0F2            000F2   225          BE    UPDTNCPY       SKIP THIS POS IF SO (NO COPY)
+ 0000EA D200 8000 7000 00000 00000   226          MVC   0(1,8),0(7)    COPY EBCDIC CODE
+ 0000F0 0680                         227 UPDTCPY  BCTR  8,0            DECREMENT COPY HEAD
+ 0000F2 0670                         228 UPDTNCPY BCTR  7,0            DECREMENT SCAN HEAD
+ 0000F4 1972                         229          CR    7,2            TEST IF BACK AT FIRST DIGIT
+ 0000F6 47B0 C0E2            000E2   230          BNL   COPYLOOP       IF NOT THEN CONTINUE
+                                     231 *
+                                     232 * SET RESULTS IN RECEIVER FIELDS
+ 0000FA 5090 6000            00000   233          ST    9,0(,6)            WRITE BACK # IMPLIED DECIMALS
+ 0000FE F27E 4000 C176 00000 00176   234          PACK  0(8,4),ZNTEMP(15)  WRITE BACK PACKED DECIMAL
+ 000104 95FF C174      00174         235          CLI   SCODE,X'FF'        SET SIGN DIGIT IF NEGATIVE
+ 000108 4770 C112            00112   236          BNE   SETRCODE
+ 00010C FC70 4000 C128 00000 00128   237          MP    0(8,4),=PL1'-1'
+                                     238 *
+                                     239 * ==== Exit linkage ============
+ 000112 41F0 0000            00000   240 SETRCODE LA    15,0           R15 = RETURN CODE OF 0
+ 000116 58D0 D004            00004   241 PARSEXIT L     13,4(,13)      POINT R13 TO CALLER'S SAVE AREA
+ 00011A 58E0 D00C            0000C   242          L     14,12(,13)     RESTORE REGISTER 14
+ 00011E 980C D014            00014   243          LM    0,12,20(13)    RESTORE R0 THRU R12
+ 000122 07FE                         244          BR    14             RETURN TO CALLER
+                                     245 *
+                                     246          LTORG
+ 000128 1D                           247                =PL1'-1'
+                                     248 *
+ 00012C                              249 PARSSAVE DS    18F'-1'        PARSE SUBPROGRAM'S SAVE AREA
+                                     250 *
+ 000174 00                           251 SCODE    DC    X'00'          SIGN CODE BYTE, DEFAULT 0 (POSITIVE)
+ 000175 00                           252 DECFLAG  DC    X'00'          DECIMAL FOUND FLAG, DEFAULT 0 (FALSE)
+ 000176                              253 ZNTEMP   DS    CL15           CONVERSION COPY FIELD
+ 000185                              254          DS    0X
+ 000185                              255          DS    0X
+                                     256 ******************************************************************
+                                     257 *
+                                     258 *    CSCI 360-H    HONORS PROJECT                SPRING 2022
+                                     259 *
+                                     260 *    DATE DUE: 5/8/2022
+                                     261 *    TIME DUE: 11:59
+                                     262 *
+                                     263 *    AUTHOR: JOSHUA SULOUFF
+                                     264 *
+                                     265 *    Takes in a set of 2 matrices from input and multiplies them.
+                                     266 *    Maximum matrix side length of 7 (MATRMAXZ)
+                                     267 *
+                                     268 *    (Note: Size restriction does not take into account
+                                     269 *     restrictions on output.)
+                                     270 *
+                                     271 *    main registers:
+                                     272 *    2 - copying addresses into arguments
+                                     273 *    1 - argument addressing (this is implied to be the case
+                                     274 *        for the rest of the program)
+                                     275 *
+                                     276 ******************************************************************
+ 000188                              277 MAIN     CSECT
+                                     278          CTRLS MAIN,RSAVE
+ 000188 90EC D00C            0000C   279+         STM   14,12,12(13)  SAVE CALLER REGISTERS
+ 00018C 18CF                         280+         LR    12,15         GET BASE POINTER
+
+                                                                                                                PAGE    6
+
+   LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+ 000188                              281+         USING MAIN,12       ADDRESSABILITY
+ 00018E 41E0 C078            00200   282+         LA    14,RSAVE      LOAD NEW SAVE AREA
+ 000192 50ED 0008            00008   283+         ST    14,8(13)      STORE FW PTR IN CALLER
+ 000196 50DE 0004            00004   284+         ST    13,4(14)      STORE BACK PTR
+ 00019A 18DE                         285+         LR    13,14         ESTABLISH NEW SAVE AREA
+                                     286 *********** START ************
+                                     287          BSR   GETMATR,GMPTR    Get first matrix
+ 00019C 4110 C138            002C0   288+         LA    1,GMPTR       LOAD ARGS
+ 0001A0 58F0 C0E0            00268   289+         L     15,=V(GETMATR) LOAD JUMP
+ 0001A4 05EF                         290+         BALR  14,15         JUMP
+ 0001A6 59F0 C0E4            0026C   291          C     15,=F'1'         PANIC IF INPUT FAILS
+ 0001AA 4780 C0C0            00248   292          BE    EXBADIN
+                                     293 *
+ 0001AE 4120 C394            0051C   294          LA    2,MATR2          Add second matrix to
+ 0001B2 5020 C138            002C0   295          ST    2,GMPTR          get matrix arguments
+                                     296          BSR   GETMATR,GMPTR    Get second matrix contents
+ 0001B6 4110 C138            002C0   297+         LA    1,GMPTR       LOAD ARGS
+ 0001BA 58F0 C0E0            00268   298+         L     15,=V(GETMATR) LOAD JUMP
+ 0001BE 05EF                         299+         BALR  14,15         JUMP
+ 0001C0 59F0 C0E4            0026C   300          C     15,=F'1'         PANIC IF INPUT FAILS
+ 0001C4 4780 C0C0            00248   301          BE    EXBADIN
+                                     302 *
+                                     303          BSR   MULTMATR,MULARG  Multiply the matrices together
+ 0001C8 4110 C1C4            0034C   304+         LA    1,MULARG      LOAD ARGS
+ 0001CC 58F0 C0E8            00270   305+         L     15,=V(MULTMATR) LOAD JUMP
+ 0001D0 05EF                         306+         BALR  14,15         JUMP
+ 0001D2 59F0 C0E4            0026C   307          C     15,=F'1'         Panic if not doable
+ 0001D6 4780 C0CE            00256   308          BE    EXNONCMP
+ 0001DA 4120 C558            006E0   309          LA    2,MATRRES        load the result matrix
+ 0001DE 5020 C138            002C0   310          ST    2,GMPTR          address into pointer
+                                     311          BSR   ECHOMATR,GMPTR   Print result matrix
+ 0001E2 4110 C138            002C0   312+         LA    1,GMPTR       LOAD ARGS
+ 0001E6 58F0 C0EC            00274   313+         L     15,=V(ECHOMATR) LOAD JUMP
+ 0001EA 05EF                         314+         BALR  14,15         JUMP
+                                     315 *
+                                     316 *
+                                     317 ***********  END  ************
+ 0001EC                              318 MAINEXIT DS    0X             Instant main normal exit
+ 0001EC 41F0 0000            00000   319          LA    15,0           Indicate normal exit
+                                     320 MAINPAN  RET                  Immediately stop (error)
+ 0001F0 58D0 D004            00004   321+MAINPAN  L     13,4(,13)     CALLER SAVE -> 13
+ 0001F4 58E0 D00C            0000C   322+         L     14,12(,13)    RESTORE 14
+ 0001F8 980C D014            00014   323+         LM    0,12,20(13)   RELOAD REGISTERS
+ 0001FC 07FE                         324+         BR    14
+ 000200                              325 RSAVE    DS    18F            Save area
+                                     326 *********PANIC STATES*********
+ 000248                              327 EXBADIN  DS    0X             Show error for bad input
+ 000248 E020 C0F0 0014 00278         328          XPRNT =CL20' ERROR: BAD INPUT',20
+ 00024E 41F0 0001            00001   329          LA    15,1
+ 000252 47F0 C068            001F0   330          B     MAINPAN
+ 000256                              331 EXNONCMP DS    0X             Show error for MatrMul Failure
+ 000256 E020 C104 0032 0028C         332          XPRNT =CL50' ERROR: INCOMPATIBLE MATRICES',50
+ 00025C 41F0 0002            00002   333          LA    15,2
+ 000260 47F0 C068            001F0   334          B     MAINPAN
+                                     335 ******************************
+                                     336 *
+                                     337          LTORG
+
+                                                                                                                PAGE    7
+
+   LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+ 000268 000008A8                     338                =V(GETMATR)
+ 00026C 00000001                     339                =F'1'
+ 000270 00000E00                     340                =V(MULTMATR)
+ 000274 00000BF8                     341                =V(ECHOMATR)
+ 000278 40C5D9D9D6D97A40             342                =CL20' ERROR: BAD INPUT'
+ 00028C 40C5D9D9D6D97A40             343                =CL50' ERROR: INCOMPATIBLE MATRICES'
+                                     344 *
+                                     345 *********** STORAGE **********
+                                     346 * Argument for subs that take 1 matrix
+ 0002C0 00000358                     347 GMPTR    DC    A(MATR1)
+                                     348 * Output buffer
+ 0002C4 40                           349 OCTL     DC    C' '
+ 0002C5 4040404040404040             350 OBUFFER  DC    CL132' '
+ 000349                              351 OBUFFERE DS    0X
+                                     352 * Multiply arguments
+ 00034C 000003580000051C             353 MULARG   DC    A(MATR1,MATR2,MATRRES)
+                                     354 * Matrices
+ 000358                              355          DS    0F               ALIGNMENT
+ 000358 ABABABABABABABAB             356 MATR1    DC    ($MATRZ)X'AB'
+ 00051C                              357          DS    0F               ALIGNMENT
+ 00051C ACACACACACACACAC             358 MATR2    DC    ($MATRZ)X'AC'
+ 0006E0                              359          DS    0F               ALIGNMENT
+ 0006E0 AFAFAFAFAFAFAFAF             360 MATRRES  DC    ($MATRZ)X'AF'    Result matrix
+                                     361 ******************************
+ 0008A2                              362          DS    0H
+                                     363 ******************************************************************
+                                     364 *
+                                     365 *                       GET MATRIX
+                                     366 *                       (MATRIX*)
+                                     367 *               Populates the supplied matrix
+                                     368 *               with info from input cards.
+                                     369 *
+                                     370 *                R2 -> MATRIX BASE PTR (F)
+                                     371 *                R3 -> INPUT PTR
+                                     372 *                R4 -> RUN TRACKER
+                                     373 *                R5 -> COLUMN COUNTER
+                                     374 *                R6 -> ROW LENGTH
+                                     375 *                R7 -> ENTRY POINTER
+                                     376 *
+                                     377 ******************************************************************
+ 0008A8                              378 GETMATR  CSECT
+                                     379          CTRLS GETMATR,RSVE2
+ 0008A8 90EC D00C            0000C   380+         STM   14,12,12(13)  SAVE CALLER REGISTERS
+ 0008AC 18CF                         381+         LR    12,15         GET BASE POINTER
+ 0008A8                              382+         USING GETMATR,12    ADDRESSABILITY
+ 0008AE 41E0 C0C0            00968   383+         LA    14,RSVE2      LOAD NEW SAVE AREA
+ 0008B2 50ED 0008            00008   384+         ST    14,8(13)      STORE FW PTR IN CALLER
+ 0008B6 50DE 0004            00004   385+         ST    13,4(14)      STORE BACK PTR
+ 0008BA 18DE                         386+         LR    13,14         ESTABLISH NEW SAVE AREA
+                                     387 *********** START ************
+ 0008BC 9822 1000            00000   388          LM    2,2,0(1)
+ 000000                              389          USING $MATR,2    Address given matrix
+                                     390 *
+ 0008C0 E000 C2FC 0050 00BA4         391          XREAD GMIBUF,80
+ 0008C6 1B55                         392          SR    5,5        ZERO COLUMN LENGTH
+ 0008C8 1B66                         393          SR    6,6        ZERO ROW LENGTH
+ 0008CA 1B44                         394          SR    4,4        ZERO 4
+
+                                                                                                                PAGE    8
+
+   LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+ 0008CC 5040 2000            00000   395          ST    4,$SIZEX   ZERO LENGTH
+ 0008D0 5040 2004            00004   396          ST    4,$SIZEY   AND WIDTH
+ 0008D4 4170 2008            00008   397          LA    7,$MTRBODY LOAD MATRIX ENTRY
+                                     398 *
+ 0008D8 4130 C2FC            00BA4   399          LA    3,GMIBUF      RESET 3
+ 0008DC 5030 C110            009B8   400          ST    3,PARSSTRT    RESET START ADDR
+                                     401 *
+ 0008E0                              402 GETRWADV DS    0X  LOOP PER NUMBER
+                                     403          BSR   PARSEDEC,PARSARG     GET NEXT NUMBER
+ 0008E0 4110 C110            009B8   404+         LA    1,PARSARG     LOAD ARGS
+ 0008E4 58F0 C108            009B0   405+         L     15,=V(PARSEDEC) LOAD JUMP
+ 0008E8 05EF                         406+         BALR  14,15         JUMP
+ 0008EA 59F0 C10C            009B4   407          C     15,=F'0'             CHECK FOR FAIL
+ 0008EE 4770 C068            00910   408          BNE   GETCARDA             CARD ADVANCE IF SO
+                                     409 *
+ 0008F2 F887 7000 C124 00000 009CC   410          ZAP   0($MATRBZ,7),RPAQRES STORE IN SPOT
+ 0008F8 4170 7009            00009   411          LA    7,$MATRBZ(,7)        INCREMENT SPOT
+                                     412 *
+ 0008FC 4150 5001            00001   413          LA    5,1(,5)              INCREMENT COL COUNTER
+ 000900 5830 C12C            009D4   414          L     3,TRAILSPC          GET ADDR OF TRAILING
+ 000904 4130 3001            00001   415          LA    3,1(,3)              INCREMENT PAST SPACE
+ 000908 5030 C110            009B8   416          ST    3,PARSSTRT          SET START POSITION
+ 00090C 47F0 C038            008E0   417          B     GETRWADV             LOOP
+                                     418 *
+ 000910                              419 GETCARDA DS    0X  CARD & ROW ADVANCE
+ 000910 4160 6001            00001   420          LA    6,1(,6)    INCREMENT ROW COUNTER
+ 000914 5940 C10C            009B4   421          C     4,=F'0'    CHECK FOR FIRST RUNTHROUH
+ 000918 4780 C0A4            0094C   422          BE    GETCARDF   STORE COLUMN COUNT IF SO
+ 00091C 41F0 0001            00001   423          LA    15,1       LOAD PANIC CODE
+ 000920 5950 2000            00000   424          C     5,$SIZEX   OTHERWISE, CHECK FORMAT
+ 000924 4770 C0B2            0095A   425          BNE   GETPANIC   PANIC IF NO MATCH
+ 000928                              426 GCNOCHK  DS    0X         SKIP CHECK
+ 000928 5050 2000            00000   427          ST    5,$SIZEX   STORE LENGTH
+ 00092C 1B55                         428          SR    5,5        CLEAR R5
+ 00092E E000 C2FC 0050 00BA4         429          XREAD GMIBUF,80  GET NEXT CARD
+                                     430 *
+ 000934 4770 C0AC            00954   431          BNZ   GETEXIT     EXIT IF LAST CARD
+ 000938 955C C2FC      00BA4         432          CLI   GMIBUF,C'*' ALSO BRANCH IF STOP CARD
+ 00093C 4780 C0AC            00954   433          BE    GETEXIT     TO EXIT
+                                     434 *
+ 000940 4130 C2FC            00BA4   435          LA    3,GMIBUF   SET INPUT BACK TO START
+ 000944 5030 C110            009B8   436          ST    3,PARSSTRT SET START ADDRESS
+ 000948 47F0 C038            008E0   437          B     GETRWADV               ADVANCE ROW OTHERWISE
+ 00094C                              438 GETCARDF DS    0X                     CARD ADV FIRST TIME
+ 00094C 4140 0001            00001   439          LA    4,1                    MARK COMPLETED
+ 000950 47F0 C080            00928   440          B     GCNOCHK                SKIP CHECK
+                                     441 *
+ 000954                              442 GETEXIT  DS    0X
+ 000954 5060 2004            00004   443          ST    6,$SIZEY  STORE MATRIX HEIGHT
+ 000958 1BFF                         444          SR    15,15     CLEAR 15 FOR NORMAL RETURN
+                                     445 *
+                                     446 ***********  END  ************
+ 00095A                              447 GETPANIC DS    0X
+                                     448          RET
+ 00095A 58D0 D004            00004   449+         L     13,4(,13)     CALLER SAVE -> 13
+ 00095E 58E0 D00C            0000C   450+         L     14,12(,13)    RESTORE 14
+ 000962 980C D014            00014   451+         LM    0,12,20(13)   RELOAD REGISTERS
+
+                                                                                                                PAGE    9
+
+   LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+ 000966 07FE                         452+         BR    14
+ 000968                              453 RSVE2    DS    18F
+                                     454 *
+                                     455          LTORG
+ 0009B0 00000000                     456                =V(PARSEDEC)
+ 0009B4 00000000                     457                =F'0'
+                                     458 *
+                                     459 *********** STORAGE **********
+ 0009B8                              460 PARSARG  DS   0X                 Arguments for PARSEDEC
+ 0009B8 00000BA400000BF4             461 PARSSTRT DC   A(GMIBUF,GMIBUFE)
+ 0009C0 000009CC000009D4             462          DC   A(RPAQRES,TRAILSPC,RPAQDEC)
+                                     463 *
+ 0009CC 000000000000000C             464 RPAQRES  DC   PL8'0'             Result of PARSEDEC
+ 0009D4 00000000                     465 TRAILSPC DC   1F'0'              Address of trailing space
+ 0009D8 00000000                     466 RPAQDEC  DC   1F'0'              Number of implied decimals
+                                     467 *
+ 0009DC ACACACACACACACAC             468 DMATR    DC   ($MATRZ)X'AC'      Dummy matrix
+ 000BA0 00000000                     469 FMATRP   DC   1F'0'
+                                     470 *
+ 000BA4 4040404040404040             471 GMIBUF   DC   CL80' '            Output buffer
+ 000BF4                              472 GMIBUFE  DS   0X
+ 000BF4 4040405C                     473          DC   C'   *'
+                                     474 ******************************
+ 000BF8                              475          DS    0H
+ 000BF8                              476          DS    0H
+ 000BF8                              477          DS    0H
+                                     478 ******************************************************************
+                                     479 *
+                                     480 *                   ECHO MATRIX
+                                     481 *                   (MATRIX*)
+                                     482 *              Prints the contents of a matrix
+                                     483 *              to output.
+                                     484 *
+                                     485 *                R2 -> MATRIX PTR          (F)
+                                     486 *                R3 -> MATRIX BODY PTR
+                                     487 *                R4 -> OUTPUT PTR
+                                     488 *                R5 -> ROW LOOP COUNTER
+                                     489 *                R6 -> COLUMN LOOP COUNTER
+                                     490 *
+                                     491 ******************************************************************
+ 000BF8                              492 ECHOMATR CSECT
+                                     493          CTRLS ECHOMATR,RSVE3
+ 000BF8 90EC D00C            0000C   494+         STM   14,12,12(13)  SAVE CALLER REGISTERS
+ 000BFC 18CF                         495+         LR    12,15         GET BASE POINTER
+ 000BF8                              496+         USING ECHOMATR,12   ADDRESSABILITY
+ 000BFE 41E0 C068            00C60   497+         LA    14,RSVE3      LOAD NEW SAVE AREA
+ 000C02 50ED 0008            00008   498+         ST    14,8(13)      STORE FW PTR IN CALLER
+ 000C06 50DE 0004            00004   499+         ST    13,4(14)      STORE BACK PTR
+ 000C0A 18DE                         500+         LR    13,14         ESTABLISH NEW SAVE AREA
+                                     501 *********** START ************
+ 000C0C 9822 1000            00000   502          LM    2,2,0(1)      GET ARGS
+ 000000                              503          USING $MATR,2       ADDRESS *R2 AS MATRIX
+                                     504 *
+ 000C10 5850 2004            00004   505          L     5,$SIZEY      LOAD SIZE Y
+ 000C14 5860 2000            00000   506          L     6,$SIZEX      LOAD SIZE X
+ 000C18 4130 2008            00008   507          LA    3,$MTRBODY    LOAD BODY PTR
+ 000C1C 4140 C0B5            00CAD   508          LA    4,ECHOBUF     POINT 4 AT OUTPUT
+
+                                                                                                                PAGE   10
+
+   LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+                                     509 *
+ 000C20                              510 ECROWLP  DS    0H            PER ROW LOOP
+ 000C20 5860 2000            00000   511          L     6,$SIZEX      RESET COLUMN COUNTER
+ 000C24                              512 ECCOLLP  DS    0H            PER COLUMN LOOP
+ 000C24 5040 C13C            00D34   513          ST    4,EVTARG      LOAD CHAR ARG
+ 000C28 5030 C140            00D38   514          ST    3,EVNARG      LOAD NUMERIC ARG
+                                     515          BSR   ECHOVAL,EVTARG   WRITE TO BUFFER
+ 000C2C 4110 C13C            00D34   516+         LA    1,EVTARG      LOAD ARGS
+ 000C30 58F0 C0B0            00CA8   517+         L     15,=V(ECHOVAL) LOAD JUMP
+ 000C34 05EF                         518+         BALR  14,15         JUMP
+ 000C36 4130 3009            00009   519          LA    3,$MATRBZ(,3)    INCREMENT NUMBER INDEX
+ 000C3A 5840 C148            00D40   520          L     4,EVENDR TRANSFER PTR
+ 000C3E 4660 C02C            00C24   521          BCT   6,ECCOLLP     PROCEED FOR EVERY COLUMN
+                                     522 *
+ 000C42 E020 C0B4 0085 00CAC         523          XPRNT ECHOCTL       PRINT ROW
+ 000C48 4140 C0B5            00CAD   524          LA    4,ECHOBUF
+ 000C4C 4650 C028            00C20   525          BCT   5,ECROWLP     PROCEED FOR EVERY ROW
+                                     526 ***********  END  ************
+                                     527          RET
+ 000C50 58D0 D004            00004   528+         L     13,4(,13)     CALLER SAVE -> 13
+ 000C54 58E0 D00C            0000C   529+         L     14,12(,13)    RESTORE 14
+ 000C58 980C D014            00014   530+         LM    0,12,20(13)   RELOAD REGISTERS
+ 000C5C 07FE                         531+         BR    14
+ 000C60                              532 RSVE3    DS    18F
+                                     533 *
+                                     534          LTORG
+ 000CA8 00000D48                     535                =V(ECHOVAL)
+                                     536 *
+                                     537 *********** STORAGE **********
+ 000CAC 40                           538 ECHOCTL  DC    C' '          Echo control character
+ 000CAD 4040404040404040             539 ECHOBUF  DC    CL132' '      Echo buffer
+                                     540 *
+ 000D34 00000CAD                     541 EVTARG   DC    A(ECHOBUF)    TEXT POINTER ARG
+ 000D38 00000000                     542 EVNARG   DC    F'0'          NUMBER POINTER ARG
+ 000D3C 00000D40                     543 EVENDA   DC    A(EVENDR)     POINTER TO LAST CHAR
+                                     544 *
+ 000D40 00000000                     545 EVENDR   DC    F'0'
+                                     546 ******************************
+ 000D44                              547          DS    0H
+                                     548 ******************************************************************
+                                     549 *
+                                     550 *                 ECHO MATRIX ENTRY
+                                     551 *                 (char*, PL9*)
+                                     552 *
+                                     553 *            PRINTS A 9 BYTE PACKED TO
+                                     554 *            THE SUPPLIED ADDRESS
+                                     555 *            IN THE FORM OF
+                                     556 *            +XXXX.XXXX
+                                     557 *
+                                     558 *            R2 -> TEXT BUFFER (F)
+                                     559 *            R3 -> PACKED NUMBER
+                                     560 *            R4 -> END OF TEXT (F) (OUTPUT)
+                                     561 *
+                                     562 ******************************************************************
+ 000013                              563 ECHOLEN  EQU   19
+                                     564 *----------------------------------------------------------------*
+ 000D48                              565 ECHOVAL  CSECT
+
+                                                                                                                PAGE   11
+
+   LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+                                     566          CTRLS ECHOVAL,RSVE4
+ 000D48 90EC D00C            0000C   567+         STM   14,12,12(13)  SAVE CALLER REGISTERS
+ 000D4C 18CF                         568+         LR    12,15         GET BASE POINTER
+ 000D48                              569+         USING ECHOVAL,12    ADDRESSABILITY
+ 000D4E 41E0 C058            00DA0   570+         LA    14,RSVE4      LOAD NEW SAVE AREA
+ 000D52 50ED 0008            00008   571+         ST    14,8(13)      STORE FW PTR IN CALLER
+ 000D56 50DE 0004            00004   572+         ST    13,4(14)      STORE BACK PTR
+ 000D5A 18DE                         573+         LR    13,14         ESTABLISH NEW SAVE AREA
+                                     574 *********** START ************
+ 000D5C 9824 1000            00000   575          LM    2,4,0(1)
+ 000D60 D212 2000 C0A5 00000 00DED   576          MVC   0(FORMATZ,2),FORMAT    Load in format string
+ 000D66 4120 2000            00000   577          LA    2,0(,2)
+ 000D6A 1812                         578          LR    1,2         Load 1 with text buffer
+ 000D6C 5A10 C0A0            00DE8   579          A     1,=F'13'    Increment to default Sign position
+ 000D70 DF12 2000 3000 00000 00000   580          EDMK  0(FORMATZ,2),0(3)  Format number
+ 000D76 0610                         581          BCTR  1,0                Decrement 1
+ 000D78 924E 1000      00000         582          MVI   0(1),C'+'          Place sign
+ 000D7C F980 3000 C0A4 00000 00DEC   583          CP    0($MATRBZ,3),=PL1'0' Check for negativity
+ 000D82 47B0 C042            00D8A   584          BNL   ECHNNEG              skip if not,
+ 000D86 9260 1000      00000         585          MVI   0(1),C'-'            otherwise place -
+ 000D8A                              586 ECHNNEG  DS    0X
+ 000D8A 4122 0013            00013   587          LA    2,FORMATZ(2)         return stop value
+ 000D8E 5020 4000            00000   588          ST    2,0(,4)              on 4th argument
+                                     589 ***********  END  ************
+                                     590          RET
+ 000D92 58D0 D004            00004   591+         L     13,4(,13)     CALLER SAVE -> 13
+ 000D96 58E0 D00C            0000C   592+         L     14,12(,13)    RESTORE 14
+ 000D9A 980C D014            00014   593+         LM    0,12,20(13)   RELOAD REGISTERS
+ 000D9E 07FE                         594+         BR    14
+ 000DA0                              595 RSVE4    DS    18F
+                                     596 *
+                                     597          LTORG
+ 000DE8 0000000D                     598                =F'13'
+ 000DEC 0C                           599                =PL1'0'
+                                     600 *
+                                     601 *********** STORAGE **********
+ 000DED 40                           602 FORMAT   DC    C' '        ZERO SUPPRESSION
+ 000DEE 2020202020202020             603          DC    3X'202020'   ECHO FIRST 11 NUMS BYTES
+ 000DF7 20202120                     604          DC    X'20202120'
+ 000DFB 4B                           605          DC    C'.'        DECIMAL
+ 000DFC 20202020                     606          DC    X'20202020' FRACTIONAL COMPONENT
+ 000013                              607 FORMATZ  EQU   *-FORMAT
+                                     608 ******************************
+ 000E00                              609          DS    0H
+                                     610 ******************************************************************
+                                     611 *
+                                     612 *                     MATRIX MULTIPLY
+                                     613 *                     (MATRIX*, MATRIX*, MATRIX*)
+                                     614 *                 Multiplies first two supplied matrices,
+                                     615 *                 stores result in 3rd matrix.
+                                     616 *
+                                     617 *                     R2-> MATRIX 1      (F)
+                                     618 *                     R3-> MATRIX 2      (F)
+                                     619 *                     R4-> RESULT MATRIX (F)
+                                     620 *
+                                     621 ******************************************************************
+                                     622 *----------------------------------------------------------------*
+
+                                                                                                                PAGE   12
+
+   LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+ 000E00                              623 MULTMATR CSECT
+                                     624          CTRLS MULTMATR,RSVE5
+ 000E00 90EC D00C            0000C   625+         STM   14,12,12(13)  SAVE CALLER REGISTERS
+ 000E04 18CF                         626+         LR    12,15         GET BASE POINTER
+ 000E00                              627+         USING MULTMATR,12   ADDRESSABILITY
+ 000E06 41E0 C0C4            00EC4   628+         LA    14,RSVE5      LOAD NEW SAVE AREA
+ 000E0A 50ED 0008            00008   629+         ST    14,8(13)      STORE FW PTR IN CALLER
+ 000E0E 50DE 0004            00004   630+         ST    13,4(14)      STORE BACK PTR
+ 000E12 18DE                         631+         LR    13,14         ESTABLISH NEW SAVE AREA
+                                     632 *********** START ************
+ 000E14 9824 1000            00000   633          LM    2,4,0(1)
+ 000E18 5020 C1A0            00FA0   634          ST    2,DPMRA       Store matrix pointers
+ 000E1C 5030 C1A4            00FA4   635          ST    3,DPMRB
+ 000000                              636          USING $MATR,4       Target result matrix
+                                     637 * CHECK FOR COMPATABILITY
+ 000E20 5852 0000            00000   638          L     5,$SIZEXO(2) COLUMNS IN A MUST EQUAL
+ 000E24 5953 0004            00004   639          C     5,$SIZEYO(3) ROWS IN B OR
+ 000E28 41F0 0001            00001   640          LA    15,1         PANIC CODE 1: INCOMPAT MATR
+ 000E2C 4770 C0B4            00EB4   641          BNE   MULPANC
+                                     642 *
+                                     643 *        SETUP RESMATRIX
+ 000E30 D203 4000 3000 00000 00000   644          MVC   $SIZEX(4),$SIZEXO(3)  RES COLS = B COLS
+ 000E36 D203 4004 2004 00004 00004   645          MVC   $SIZEY(4),$SIZEYO(2)  RES ROWS = A ROWS
+                                     646 *
+                                     647          BSR   ECHOMATR,DPMRA        Echo input matrices
+ 000E3C 4110 C1A0            00FA0   648+         LA    1,DPMRA       LOAD ARGS
+ 000E40 58F0 C110            00F10   649+         L     15,=V(ECHOMATR) LOAD JUMP
+ 000E44 05EF                         650+         BALR  14,15         JUMP
+ 000E46 E020 C118 0001 00F18         651          XPRNT =C' ',1               Newline
+                                     652          BSR   ECHOMATR,DPMRB
+ 000E4C 4110 C1A4            00FA4   653+         LA    1,DPMRB       LOAD ARGS
+ 000E50 58F0 C110            00F10   654+         L     15,=V(ECHOMATR) LOAD JUMP
+ 000E54 05EF                         655+         BALR  14,15         JUMP
+ 000E56 E020 C118 0001 00F18         656          XPRNT =C' ',1
+ 000E5C 4150 4008            00008   657          LA    5,$MTRBODY            Track to matrix body
+ 000E60 5860 2004            00004   658          L     6,$SIZEYO(,2)   Load 6 to iterate over Rows
+ 000E64 1B77                         659          SR    7,7             clear 7
+ 000E66 5070 C1AC            00FAC   660          ST    7,MULROWI    CLEAR ROW INDEX
+                                     661 *
+ 000E6A                              662 RESROW   DS    0X
+ 000E6A 5880 3000            00000   663          L     8,$SIZEXO(,3)  SET COLUMN COUNTER
+ 000E6E 1B77                         664          SR    7,7          ZERO SEVEN
+ 000E70 5070 C1B0            00FB0   665          ST    7,MULCOLI    CLEAR COLUMN INDEX
+ 000E74                              666 RESCOL   DS    0X
+ 000E74 5050 C1A8            00FA8   667          ST    5,DPRESP     POINT DP AT RESULT INDEX
+ 000E78 5870 C1AC            00FAC   668          L     7,MULROWI    OUTPUT ROW NUMBER
+                                     669          BSR   DOTPROD,MDPARGS         Compute dot product
+ 000E7C 4110 C1A0            00FA0   670+         LA    1,MDPARGS     LOAD ARGS
+ 000E80 58F0 C114            00F14   671+         L     15,=V(DOTPROD) LOAD JUMP
+ 000E84 05EF                         672+         BALR  14,15         JUMP
+                                     673          MINCR MULCOLI,7               increment column
+ 000E86 5870 C1B0            00FB0   674+         L     7,MULCOLI
+ 000E8A 4170 7001            00001   675+         LA    7,1(,7)
+ 000E8E 5070 C1B0            00FB0   676+         ST    7,MULCOLI
+ 000E92 4150 5009            00009   677          LA    5,$MATRBZ(,5) INCREMENT TO NEXT SPOT
+ 000E96 4680 C074            00E74   678          BCT   8,RESCOL                count along columns
+                                     679 *
+
+                                                                                                                PAGE   13
+
+   LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+                                     680          MINCR MULROWI,7               increment row
+ 000E9A 5870 C1AC            00FAC   681+         L     7,MULROWI
+ 000E9E 4170 7001            00001   682+         LA    7,1(,7)
+ 000EA2 5070 C1AC            00FAC   683+         ST    7,MULROWI
+ 000EA6 1B77                         684          SR    7,7
+ 000EA8 5070 C1B0            00FB0   685          ST    7,MULCOLI               reset columns
+ 000EAC 4660 C06A            00E6A   686          BCT   6,RESROW                count along rows
+                                     687 *
+                                     688 *
+                                     689 ***********  end  ************
+ 000EB0                              690 MULEXT   DS    0X
+ 000EB0 41F0 0000            00000   691          LA    15,0
+ 000EB4                              692 MULPANC  DS    0H
+                                     693          RET
+ 000EB4 58D0 D004            00004   694+         L     13,4(,13)     CALLER SAVE -> 13
+ 000EB8 58E0 D00C            0000C   695+         L     14,12(,13)    RESTORE 14
+ 000EBC 980C D014            00014   696+         LM    0,12,20(13)   RELOAD REGISTERS
+ 000EC0 07FE                         697+         BR    14
+ 000EC4                              698 RSVE5    DS    18F
+                                     699 *
+                                     700          LTORG
+ 000F10 00000BF8                     701                =V(ECHOMATR)
+ 000F14 00000FB8                     702                =V(DOTPROD)
+ 000F18 40                           703                =C' '
+                                     704 *
+                                     705 *********** STORAGE **********
+                                     706 *
+ 000F19 40                           707 MULDCTL  DC    C' '
+ 000F1A 4040404040404040             708 MULDOBF  DC    CL133' '
+                                     709 *
+ 000FA0                              710 MDPARGS  DS    0F
+ 000FA0                              711 DPMRA    DS    F   MATRIX A POINTER
+ 000FA4                              712 DPMRB    DS    F   MATRIX B POINTER
+ 000FA8                              713 DPRESP   DS    F   RESULT POINTER
+ 000FAC                              714 MULROWI  DS    F   Row index
+ 000FB0                              715 MULCOLI  DS    F   Column index
+                                     716 *
+ 000FB4                              717          DS    0H
+                                     718 ******************************************************************
+                                     719 *
+                                     720 *                       DOT PROD
+                                     721 *             (MATRIX*, MATRIX*, PL9*, INT, INT)
+                                     722 *                       Calculates the dot product
+                                     723 *                       between the given matrices
+                                     724 *                       for the given row and column
+                                     725 *
+                                     726 *                       R2-> MATRIX A      (F)
+                                     727 *                       R3-> MATRIX B      (F)
+                                     728 *                       R4-> RESULT ADDRSS (F)
+                                     729 *                       R5-> ROW (A)       (F)
+                                     730 *                       R6-> COL (B)       (F)
+                                     731 *                       R8-> MUL UPPER
+                                     732 *                       R9-> MUL LOWER
+                                     733 *                      R10-> ARRAY PTR
+                                     734 *                      R10-> ARRAY PTR
+                                     735 *
+                                     736 ******************************************************************
+
+                                                                                                                PAGE   14
+
+   LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+ 000FB8                              737 DOTPROD  CSECT
+                                     738          CTRLS DOTPROD,RSVE6
+ 000FB8 90EC D00C            0000C   739+         STM   14,12,12(13)  SAVE CALLER REGISTERS
+ 000FBC 18CF                         740+         LR    12,15         GET BASE POINTER
+ 000FB8                              741+         USING DOTPROD,12    ADDRESSABILITY
+ 000FBE 41E0 C0A0            01058   742+         LA    14,RSVE6      LOAD NEW SAVE AREA
+ 000FC2 50ED 0008            00008   743+         ST    14,8(13)      STORE FW PTR IN CALLER
+ 000FC6 50DE 0004            00004   744+         ST    13,4(14)      STORE BACK PTR
+ 000FCA 18DE                         745+         LR    13,14         ESTABLISH NEW SAVE AREA
+                                     746 *********** START ************
+ 000FCC 9826 1000            00000   747          LM    2,6,0(1)
+                                     748 *         USING $MATR,3       REFER TO B
+ 000FD0 1B88                         749          SR    8,8           CLEAR BOTH MULTIPLICATION
+ 000FD2 1B99                         750          SR    9,9           REGISTERS
+ 000FD4 4190 0009            00009   751          LA    9,$MATRBZ     LOAD SIZE OF ENTRY
+ 000FD8 5C83 0000            00000   752          M     8,$SIZEXO(3)      MULTIPLY ENTRY SIZE BY LEN
+ 000FDC 5090 C0EC            010A4   753          ST    9,BINC        TO GET SIZE OF A ROW IN BYTES
+                                     754 *
+                                     755 *         USING $MATR,2       REFER TO A
+ 000FE0 1B88                         756          SR    8,8           CLEAR BOTH MUL
+ 000FE2 1B99                         757          SR    9,9           REGISTERS
+ 000FE4 4190 0009            00009   758          LA    9,$MATRBZ      LOAD SIZE OF ENTRY
+ 000FE8 5C82 0000            00000   759          M     8,$SIZEXO(2)       MULTIPLY BY ROW OF A
+ 000FEC 5090 C0F0            010A8   760          ST    9,AINC        STORE A INCREMENT
+                                     761 *
+ 000000                              762          USING $MATR,2          REFER TO A
+ 000FF0 1B88                         763          SR    8,8              ROW START = SIZEOF(ROW) * NUMBER
+ 000FF2 1B99                         764          SR    9,9              CLEAR
+ 000FF4 5890 C0F0            010A8   765          L     9,AINC           LOAD WIDTH
+ 000FF8 1C85                         766          MR    8,5              MULTIPLY BY ROW NUMBER
+ 000FFA 1859                         767          LR    5,9              STORE BODY OFFSET BACK INTO 5
+ 000FFC 4155 2008            00008   768          LA    5,$MTRBODO(5,2)  CONVERT TO RAW ADDRESS
+                                     769 *
+ 000000                              770          USING $MATR,3       REFER TO B
+ 001000 1B88                         771          SR    8,8           COLUMN START = SIZEOF(ITEM) * NUMBER
+ 001002 1B99                         772          SR    9,9           CLEAR
+ 001004 4190 0009            00009   773          LA    9,$MATRBZ     LOAD ITEM SIZE
+ 001008 1C86                         774          MR    8,6           MULTIPLY BY COLUMN NUMBER
+ 00100A 1869                         775          LR    6,9           STORE RESULT BACK INTO 6
+ 00100C 4166 3008            00008   776          LA    6,$MTRBODO(6,3)      TURN INTO AN OFFSET FROM MATR
+                                     777 *
+                                     778 *        LOOP OVER INDICES
+                                     779 *
+ 001010 F8F0 C0F4 C0E8 010AC 010A0   780          ZAP   DPTEMPP(DPTEMPPZ),=PL1'0'
+ 001016 F880 C104 C0E8 010BC 010A0   781          ZAP   DPACCUM(DPACCUMZ),=PL1'0'
+ 00101C 5883 0004            00004   782          L     8,$SIZEYO(3)   NUMBER OF INDICES = YSIZE
+ 001020                              783 DPLP     DS    0X
+                                     784 *         XDUMP
+ 001020 F8F8 C0F4 5000 010AC 00000   785          ZAP   DPTEMPP(DPTEMPPZ),0($MATRBZ,5) LOAD COLUMN ITEM
+ 001026 FCF7 C0F4 6001 010AC 00001   786          MP    DPTEMPP(DPTEMPPZ),1($MATRBZ-1,6) MULTIPLY BY ROW ITEM
+                                     787 *
+ 00102C FA8F C104 C0F4 010BC 010AC   788          AP    DPACCUM(DPACCUMZ),DPTEMPP(DPTEMPPZ)
+                                     789 *
+ 001032 4150 5009            00009   790          LA    5,$MATRBZ(,5) INCREMENT TO NEXT IN ROW
+ 001036 5A60 C0EC            010A4   791          A     6,BINC       INCREMENT TO NEXT IN COLUMN
+ 00103A 4680 C068            01020   792          BCT   8,DPLP
+ 00103E F085 C104 003C 010BC 0003C   793          SRP   DPACCUM(DPACCUMZ),64-4,5
+
+                                                                                                                PAGE   15
+
+   LOC  OBJECT CODE    ADDR1 ADDR2  STMT   SOURCE STATEMENT
+ 001044 F888 4000 C104 00000 010BC   794          ZAP   0(9,4),DPACCUM STORE RESULT
+                                     795 ***********  END  ************
+                                     796          RET
+ 00104A 58D0 D004            00004   797+         L     13,4(,13)     CALLER SAVE -> 13
+ 00104E 58E0 D00C            0000C   798+         L     14,12(,13)    RESTORE 14
+ 001052 980C D014            00014   799+         LM    0,12,20(13)   RELOAD REGISTERS
+ 001056 07FE                         800+         BR    14
+ 001058                              801 RSVE6    DS    18F
+                                     802 *
+                                     803          LTORG
+ 0010A0 0C                           804                =PL1'0'
+                                     805 *
+                                     806 *********** STORAGE **********
+ 0010A4                              807          DS    0F
+ 0010A4 BCBCBCBC                     808 BINC     DC    4X'BC'           ROW INCREMENT VAL FOR B
+ 0010A8 BEBEBEBE                     809 AINC     DC    4X'BE'           ROW INCREMENT VAL FOR A
+ 0010AC                              810 DPTEMPP  DS    PL16
+ 000010                              811 DPTEMPPZ EQU   *-DPTEMPP
+ 0010BC                              812 DPACCUM  DS    PL9
+ 000009                              813 DPACCUMZ EQU   *-DPACCUM
+ 0010C5 40                           814 DBBUF    DC    C' '
+ 0010C6 D9D6E640D5E4D4C2             815          DC    C'ROW NUMBER: '
+ 0010D2 4040404040404040             816 DBRN     DC    CL12' '
+ 0010DE 40C3D6D3E4D4D540             817          DC    C' COLUMN NUMBER: '
+ 0010EE 4040404040404040             818 DBCN     DC    CL12' '
+ 000035                              819 DBBUFZ   EQU   *-DBBUF
+                                     820          END MAIN
+
+ ***  NO   STATEMENTS FLAGGED -  NO   WARNINGS,  NO   ERRORS
+
+ *** DYNAMIC CORE AREA USED:  LOW:   41472 HIGH:    2964 LEAVING:  449132 FREE BYTES. AVERAGE:       54 BYTES/STMT ***
+
+ *** ASSEMBLY TIME =    0.001 SECS,   821000 STATEMENTS/SEC ***
+
+ *** PROGRAM EXECUTION BEGINNING - ANY OUTPUT BEFORE EXECUTION TIME MESSAGE IS PRODUCED BY USER PROGRAM ***
+            +21.0001            +0.0002            +4.0004
+             -5.0006            +6.0005            -0.0032
+             +6.0006            +6.0005            +0.0032
+             +5.0006            +6.0005            +0.0032
+
+            +12.0453           +24.0232           +44.0242           +44.0252
+            +76.1222          +220.0446           +44.0222           +44.0222
+           +330.0349           +34.6557           +44.0222           +44.0222
+
+          +1573.2393          +643.1703         +1100.6278         +1100.6488
+           +395.4814         +1200.1363           +43.8669           +43.8619
+           +530.1064         +1464.6421          +528.4677          +528.4737
+           +518.0611         +1440.6189          +484.4435          +484.4485
+
+ *** EXECUTION TIME =    0.003 SECS.      9793 INSTRUCTIONS EXECUTED -  3264333 INSTRUCTIONS/SEC ***
+
+ *** AM004 - NORMAL USER TERMINATION BY RETURN ***
